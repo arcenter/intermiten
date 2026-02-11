@@ -1,0 +1,52 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Base colors -->
+    <SolidColorBrush x:Key="dark-a0" Color="#000000"/>
+    <SolidColorBrush x:Key="light-a0" Color="#ffffff"/>
+
+    <!-- Theme primary colors -->
+    <SolidColorBrush x:Key="primary-a0" Color="#ef1680"/>
+    <SolidColorBrush x:Key="primary-a10" Color="#f4478d"/>
+    <SolidColorBrush x:Key="primary-a20" Color="#f8649b"/>
+    <SolidColorBrush x:Key="primary-a30" Color="#fc7ea8"/>
+    <SolidColorBrush x:Key="primary-a40" Color="#ff95b6"/>
+    <SolidColorBrush x:Key="primary-a50" Color="#ffabc4"/>
+
+    <!-- Theme surface colors -->
+    <SolidColorBrush x:Key="surface-a0" Color="#121212"/>
+    <SolidColorBrush x:Key="surface-a10" Color="#282828"/>
+    <SolidColorBrush x:Key="surface-a20" Color="#3f3f3f"/>
+    <SolidColorBrush x:Key="surface-a30" Color="#575757"/>
+    <SolidColorBrush x:Key="surface-a40" Color="#717171"/>
+    <SolidColorBrush x:Key="surface-a50" Color="#8b8b8b"/>
+
+    <!-- Theme tonal surface colors -->
+    <SolidColorBrush x:Key="surface-tonal-a0" Color="#26181c"/>
+    <SolidColorBrush x:Key="surface-tonal-a10" Color="#3b2d31"/>
+    <SolidColorBrush x:Key="surface-tonal-a20" Color="#504447"/>
+    <SolidColorBrush x:Key="surface-tonal-a30" Color="#675c5f"/>
+    <SolidColorBrush x:Key="surface-tonal-a40" Color="#7f7577"/>
+    <SolidColorBrush x:Key="surface-tonal-a50" Color="#978f91"/>
+
+    <!-- Success colors -->
+    <SolidColorBrush x:Key="success-a0" Color="#22946e"/>
+    <SolidColorBrush x:Key="success-a10" Color="#47d5a6"/>
+    <SolidColorBrush x:Key="success-a20" Color="#9ae8ce"/>
+
+    <!-- Warning colors -->
+    <SolidColorBrush x:Key="warning-a0" Color="#a87a2a"/>
+    <SolidColorBrush x:Key="warning-a10" Color="#d7ac61"/>
+    <SolidColorBrush x:Key="warning-a20" Color="#ecd7b2"/>
+
+    <!-- Danger colors -->
+    <SolidColorBrush x:Key="danger-a0" Color="#9c2121"/>
+    <SolidColorBrush x:Key="danger-a10" Color="#d94a4a"/>
+    <SolidColorBrush x:Key="danger-a20" Color="#eb9e9e"/>
+
+    <!-- Info colors -->
+    <SolidColorBrush x:Key="info-a0" Color="#21498a"/>
+    <SolidColorBrush x:Key="info-a10" Color="#4077d1"/>
+    <SolidColorBrush x:Key="info-a20" Color="#92b2e5"/>
+
+</ResourceDictionary>

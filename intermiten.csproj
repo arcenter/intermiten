@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+<PropertyGroup>
+	<OutputType>WinExe</OutputType>
+	<TargetFramework>net8.0-windows</TargetFramework>
+	<Nullable>enable</Nullable>
+	<ImplicitUsings>enable</ImplicitUsings>
+	<UseWPF>true</UseWPF>
+</PropertyGroup>
+
+<ItemGroup>
+	<None Remove="Resources\Data\courses.json" />
+	<None Remove="Resources\Data\timetable.json" />
+	<None Remove="Resources\Fonts\license.txt" />
+	<None Remove="Resources\Fonts\Manrope.ttf" />
+	<None Remove="Resources\Icons\icon.ico" />
+	<None Remove="Resources\Icons\icon.svg" />
+	<None Remove="Resources\Icons\monochromeIcon.ico" />
+</ItemGroup>
+
+<ItemGroup>
+	<Resource Include="Resources\Data\courses.json">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Resources\Data\timetable.json">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Resources\Fonts\Manrope.ttf">
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Resource>
+</ItemGroup>
+
+<ItemGroup>
+	<PackageReference Include="ColorHashSharp" Version="1.1.0" />
+	<PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="2.0.1" />
+</ItemGroup>
+
+<ItemGroup>
+	<Resource Include="Resources\Fonts\license.txt">
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Resources\Icons\icon.ico">
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Resources\Icons\icon.svg">
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Resources\Icons\monochromeIcon.ico">
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Resource>
+</ItemGroup>
+
+<PropertyGroup>
+	<BuildVersion>$( [System.DateTime]::UtcNow.ToString('yyyy.MM.dd.HH.mm.ss') )</BuildVersion>
+</PropertyGroup>
+
+<ItemGroup>
+	<AssemblyAttribute Include="BuildVersionAttribute">
+		<_Parameter1>$(BuildVersion)</_Parameter1>
+	</AssemblyAttribute>
+</ItemGroup>
+
+</Project>
