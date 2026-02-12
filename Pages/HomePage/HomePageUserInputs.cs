@@ -1,6 +1,10 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Security.RightsManagement;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace intermiten.Pages
 {
@@ -22,7 +26,78 @@ namespace intermiten.Pages
 
         // Keyboard -------------------------------------------------------------------------------------------------------
 
-        private void Page_KeyDown(object sender, KeyEventArgs e) { }
+        private void Page_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl)) && e.Key == Key.E)
+            {
+                int dpi = 96*2;
+                int width = (int)(timetableGrid.RenderSize.Width / 96 * dpi);
+                int height = (int)(timetableGrid.RenderSize.Height / 96 * dpi);
+
+                RenderTargetBitmap rtb = new(width, height, dpi, dpi, PixelFormats.Pbgra32);
+                rtb.Render(timetableGrid);
+
+                // -------------------------------------------------------------- Padding
+
+                int padding = 100;
+
+                // rtb = your original RenderTargetBitmap
+                int srcW = rtb.PixelWidth;
+                int srcH = rtb.PixelHeight;
+
+                int dstW = srcW + padding * 2;
+                int dstH = srcH + padding * 2;
+
+                int bpp = (rtb.Format.BitsPerPixel + 7) / 8;
+                int srcStride = srcW * bpp;
+                byte[] srcPixels = new byte[srcStride * srcH];
+
+                rtb.CopyPixels(srcPixels, srcStride, 0);
+
+                // destination buffer (auto-black because byte[] defaults to 0)
+                int dstStride = dstW * bpp;
+                byte[] dstPixels = new byte[dstStride * dstH];
+
+                for (int i = 0; i < dstPixels.Length; i += 4)
+                {
+                    dstPixels[i] = (byte)(18);
+                    dstPixels[i+1] = (byte)(18);
+                    dstPixels[i+2] = (byte)(18);
+                    dstPixels[i+3] = (byte)(255);
+                }
+
+                // copy row by row with offset
+                for (int y = 0; y < srcH; y++)
+                {
+                    int srcIndex = y * srcStride;
+                    int dstIndex = (y + padding) * dstStride + padding * bpp;
+                    Buffer.BlockCopy(srcPixels, srcIndex, dstPixels, dstIndex, srcStride);
+                }
+
+                // create final bitmap
+                WriteableBitmap final = new(
+                    dstW,
+                    dstH,
+                    rtb.DpiX,
+                    rtb.DpiY,
+                    PixelFormats.Pbgra32,
+                    null);
+
+                final.WritePixels(
+                    new Int32Rect(0, 0, dstW, dstH),
+                    dstPixels,
+                    dstStride,
+                    0);
+
+                // ----------------------------------------------------------------------
+
+                PngBitmapEncoder encoder = new();
+                encoder.Frames.Add(BitmapFrame.Create(final));
+                using (FileStream stream = File.Create("highres.png"))
+                    encoder.Save(stream);
+            }
+        }
+
 
         private void Page_KeyUp(object sender, KeyEventArgs e) { }
 
@@ -30,7 +105,7 @@ namespace intermiten.Pages
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e) { }
 
-        private void ScrollViewer_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
+        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             try
             {
