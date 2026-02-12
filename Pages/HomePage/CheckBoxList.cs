@@ -48,5 +48,17 @@ namespace intermiten.Pages
                     else if (searchBox.Text.Length >= 3)
                         sidebarCourseSectionList.Children.Add(cli);
         }
+
+        private void SelectAll()
+        {
+            foreach (CourseListItem cli in sidebarCourseSectionList.Children)
+                cli.ToggleCheckboxStatus(true);
+        }
+
+        private void SelectNone()
+        {
+            foreach (CourseListItem cli in sidebarCourseSectionList.Children)
+                cli.ToggleCheckboxStatus(false);
+        }
     }
 }

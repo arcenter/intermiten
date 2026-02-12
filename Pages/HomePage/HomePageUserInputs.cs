@@ -47,6 +47,16 @@ namespace intermiten.Pages
                 {
                     FileOpen();
                 }
+                else if (e.Key == Key.A)
+                {
+                    if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
+                        SelectAll();
+                }
+                else if (e.Key == Key.D)
+                {
+                    if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
+                        SelectNone();
+                }
             }
         }
 

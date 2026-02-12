@@ -33,9 +33,14 @@ namespace intermiten.UserControls
                 ToggleCheckboxStatus();
         }
 
-        public async void ToggleCheckboxStatus()
+        public void ToggleCheckboxStatus()
         {
-            IsChecked = !IsChecked;
+            ToggleCheckboxStatus(!IsChecked);
+        }
+        
+        public async void ToggleCheckboxStatus(bool toggle)
+        {
+            IsChecked = toggle;
             checkMark.BeginAnimation(OpacityProperty, new DoubleAnimation(IsChecked ? 1 : 0, TimeSpan.FromMilliseconds(250)));
             if (IsChecked)
             {
