@@ -5,13 +5,15 @@ namespace intermiten.Pages
 {
     public partial class HomePage : Page
     {
-        public List<CourseListItem> courses = new();
-        public Dictionary<string, CourseListItem> course_to_CourseListItem = new();
+        public List<CourseListItem> courses;
+        public Dictionary<string, CourseListItem> course_to_CourseListItem;
 
         private void LoadSidebarItems()
         {
             // A `course` is every unique course+id+section+room string
 
+            courses = new();
+            course_to_CourseListItem = new();
             List<string> _courses = [];
 
             foreach (string day in timetable.Keys)

@@ -13,18 +13,18 @@ namespace intermiten.Pages
     public partial class HomePage : Page
     {
         Dictionary<string, Dictionary<string, List<string>>> timetable;
-        public List<string> checked_courses = [];
+        public List<string> checked_courses;
 
         private void LoadTimeTableData()
         {
             timetable = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, List<string>>>>(File.ReadAllText("C:/repos/intermiten/Resources/Data/timetable.json"));
+            checked_courses = [];
 
             LoadSidebarItems();
 
-            string path = $"{AppContext.BaseDirectory}\\data.json";
-            if (File.Exists(path))
+            if (File.Exists(save_path))
             {
-                List<string> checked_courses = JsonSerializer.Deserialize<List<string>>(File.ReadAllText(path));
+                List<string> checked_courses = JsonSerializer.Deserialize<List<string>>(File.ReadAllText(save_path));
                 checked_courses = [.. checked_courses.Distinct()];
                 foreach (string course in checked_courses)
                     course_to_CourseListItem[course].ToggleCheckboxStatus();

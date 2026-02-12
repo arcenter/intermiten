@@ -1,8 +1,6 @@
 ﻿using intermiten.Core;
 using intermiten.Pages;
-using System.IO;
 using System.Reflection;
-using System.Text.Json;
 using System.Windows;
 
 namespace intermiten
@@ -27,7 +25,7 @@ namespace intermiten
 
             Closed += (s, e) =>
             {
-                File.WriteAllText($"{AppContext.BaseDirectory}\\data.json", JsonSerializer.Serialize(homePage.checked_courses));
+                homePage.FileSave();
             };
         }
     }
