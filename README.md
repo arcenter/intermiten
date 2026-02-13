@@ -2,7 +2,7 @@
 
 ---
 
-<h4 align="center"><i>A beautifully simple Task Manager for Windows 10</i></h4>
+<h4 align="center"><i>A beautifully simple Timetable Visualizer for Windows 10</i></h4>
 
 ---
 
