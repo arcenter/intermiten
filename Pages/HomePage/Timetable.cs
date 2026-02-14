@@ -28,11 +28,16 @@ namespace intermiten.Pages
                 checked_courses = [.. checked_courses.Distinct()];
                 foreach (string course in checked_courses)
                     course_to_CourseListItem[course].ToggleCheckboxStatus();
+                mainWindow.WindowTitle.Content = $" - {System.IO.Path.GetFileName(save_path)}";
             }
+            else
+                mainWindow.WindowTitle.Content = $" - Untitled";
 
             UpdateList();
             LoadBaseTimeTable();
             ReloadTimeTable();
+
+            mainWindow.Unsaved.Visibility = Visibility.Collapsed;
         }
 
         public void LoadBaseTimeTable()

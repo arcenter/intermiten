@@ -15,6 +15,7 @@ namespace intermiten.Pages
         public void FileSave()
         {
             File.WriteAllText(save_path, JsonSerializer.Serialize(checked_courses));
+            mainWindow.Unsaved.Visibility = Visibility.Collapsed;
         }
 
         private void FileSaveAs()
@@ -31,7 +32,7 @@ namespace intermiten.Pages
                 try
                 {
                     save_path = selectedFilePath;
-                    File.WriteAllText(save_path, JsonSerializer.Serialize(checked_courses));
+                    FileSave();
                 }
                 catch { save_path = oldPath; }
             }

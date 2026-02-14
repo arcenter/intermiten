@@ -54,6 +54,7 @@ namespace intermiten.UserControls
                 mainWindow.homePage.RemoveFromTimeTable();
                 mainWindow.homePage.checked_courses.Remove(courseNameTextbox.Text);
             }
+            mainWindow.Unsaved.Visibility = Visibility.Visible;
         }
     }
 }
