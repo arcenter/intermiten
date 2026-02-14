@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:UserControls="clr-namespace:intermiten.UserControls"
         mc:Ignorable="d" 
         d:DesignHeight="515" d:DesignWidth="1025"
         Title="Home" Loaded="Page_Loaded" Unloaded="Page_Unloaded" Focusable="True">
-
+    
     <Grid Margin="30">
 
         <Grid.ColumnDefinitions>
@@ -47,14 +48,38 @@
             </Grid>
         </Border>
 
-        <ScrollViewer Style="{StaticResource CustomScrollViewerStyle}" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
-            <StackPanel>
-                <TextBox x:Name="searchBox" Style="{StaticResource RoundedTextBoxTransparent}" TextChanged="SearchBox_TextChanged" Padding="10 5 5 5" Height="40"/>
-                <Border Height="14"/>
-                <StackPanel x:Name="sidebarCourseSectionList" MinHeight="400">
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="14"/>
+                <RowDefinition/>
+                <RowDefinition Height="14"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            
+            <TextBox x:Name="searchBox" Style="{StaticResource RoundedTextBoxTransparent}" TextChanged="SearchBox_TextChanged" Padding="10 5 5 5"/>
+            <ScrollViewer Style="{StaticResource CustomScrollViewerStyle}" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" Grid.Row="2">
+                    <StackPanel x:Name="sidebarCourseSectionList">
+                    </StackPanel>
+            </ScrollViewer>
+            <DockPanel Grid.Row="4" Margin="0 0 17 0">
+                <StackPanel Orientation="Horizontal">
+                    <UserControls:IconButton x:Name="openIconButton" Source="{StaticResource openIcon}" ImagePadding="8"/>
+                    <Border Width="10"/>
+                    <UserControls:IconButton x:Name="saveIconButton" Source="{StaticResource saveIcon}" ImagePadding="8"/>
+                    <Border Width="10"/>
+                    <UserControls:IconButton x:Name="saveAsIconButton" Source="{StaticResource saveAsIcon}" ImagePadding="6"/>
                 </StackPanel>
-            </StackPanel>
-        </ScrollViewer>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <UserControls:IconButton x:Name="selectNoneIconButton" Source="{StaticResource selectNoneIcon}" ImagePadding="8"/>
+                    <Border Width="10"/>
+                    <UserControls:IconButton x:Name="selectAllIconButton" Source="{StaticResource selectAllIcon}" ImagePadding="8"/>
+                    <Border Width="10"/>
+                    <UserControls:IconButton x:Name="exportIconButton" Source="{StaticResource exportIcon}"/>
+                </StackPanel>
+            </DockPanel>
+        </Grid>
 
     </Grid>
 

@@ -82,5 +82,15 @@ namespace intermiten.Pages
             }
             catch { }
         }
+
+        private void Load_IconButton_MouseDown()
+        {
+            openIconButton.MouseDown += (s, e) => { FileOpen(); };
+            saveIconButton.MouseDown += (s, e) => { FileSave(); };
+            saveAsIconButton.MouseDown += (s, e) => { FileSaveAs(); };
+            selectAllIconButton.MouseDown += (s, e) => { SelectAll(); };
+            selectNoneIconButton.MouseDown += (s, e) => { SelectNone(); };
+            exportIconButton.MouseDown += (s, e) => { ExportImage(); };
+        }
     }
 }

@@ -112,7 +112,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="6"/>
                             <RowDefinition/>
-                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="6"/>
                         </Grid.RowDefinitions>
                         <Track x:Name="PART_Track" IsDirectionReversed="true" IsEnabled="{TemplateBinding IsMouseOver}" Grid.Row="1">
                             <Track.DecreaseRepeatButton>

@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="intermiten.UserControls.IconButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:intermiten.UserControls"
+             mc:Ignorable="d">
+
+    <Border CornerRadius="4" Padding="{Binding ImagePadding, RelativeSource={RelativeSource AncestorType=UserControl}}" Cursor="Hand" IsMouseDirectlyOverChanged="IconButton_IsMouseDirectlyOverChanged">
+        <Border.Background>
+            <SolidColorBrush Color="{Binding Color, Source={StaticResource surface-a10}}" Opacity="0"/>
+        </Border.Background>
+        <Image Source="{Binding Source, RelativeSource={RelativeSource AncestorType=UserControl}}" IsHitTestVisible="False"/>
+    </Border>
+
+</UserControl>

@@ -16,6 +16,7 @@ namespace intermiten.Pages
             Loaded += (s, e) =>
             {
                 LoadTimeTableData();
+                Load_IconButton_MouseDown();
             };
         }
     }
