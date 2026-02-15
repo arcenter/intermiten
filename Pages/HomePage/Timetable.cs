@@ -17,7 +17,7 @@ namespace intermiten.Pages
 
         private void LoadTimeTableData()
         {
-            timetable = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, List<string>>>>(File.ReadAllText("C:/repos/intermiten/Resources/Data/timetable.json"));
+            timetable = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, List<string>>>>(File.ReadAllText($"{AppContext.BaseDirectory}\\timetable.json"));
             checked_courses = [];
 
             LoadSidebarItems();
